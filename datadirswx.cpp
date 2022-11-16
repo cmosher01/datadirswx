@@ -1,8 +1,6 @@
 #include <wx/stdpaths.h>
 #include <wx/init.h>
 #include <wx/utils.h>
-#include <wx/string.h>
-#include <wx/wxcrt.h>
 #include <cstdio>
 
 int main(int argc, char **argv)
@@ -23,19 +21,19 @@ int main(int argc, char **argv)
 
 
     wxString home = ::wxGetHomeDir();
-    wxPrintf("%20s: %s\n", "home", home);
+    std::printf("%20s: %s\n", "home", (const char *)home.c_str());
 
     wxString homeuser = ::wxGetUserHome(::wxGetUserId());
-    wxPrintf("%20s: %s\n", "user-home", homeuser);
+    std::printf("%20s: %s\n", "user-home", (const char *)homeuser.c_str());
 
     wxString conf = sp.GetUserConfigDir();
-    wxPrintf("%20s: %s\n", "config", conf);
+    std::printf("%20s: %s\n", "config", (const char *)conf.c_str());
 
     wxString cache = sp.GetUserLocalDataDir();
-    wxPrintf("%20s: %s\n", "cache", cache);
+    std::printf("%20s: %s\n", "cache", (const char *)cache.c_str());
 
     wxString docs = sp.GetAppDocumentsDir();
-    wxPrintf("%20s: %s\n", "documents", docs);
+    std::printf("%20s: %s\n", "documents", (const char *)docs.c_str());
     
 
 
