@@ -5,9 +5,7 @@ on:
       - "*"
 
 jobs:
-  "build-epple2-ubuntu":
-
-    
+  "build-ubuntu":
     runs-on: "ubuntu-22.04"
     steps:
       - uses: "actions/checkout@v3"
@@ -19,9 +17,27 @@ jobs:
           sudo apt-get -qqqq update
           sudo apt-get -qqqq install xdg-user-dirs libwxgtk3.0-gtk3-dev
           xdg-user-dirs-update --force
-          env | grep -i xdg
-          ls -l /home/runner
-          ls -l /home/runner/.config
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
+
+      - name: "Test"
+        shell: "bash"
+        run: "./build/datadirswx"
+
+
+
+  "build-macos":
+    runs-on: "macos-12"
+    steps:
+      - uses: "actions/checkout@v3"
+
+      - name: "Build"
+        shell: "bash"
+        run: |
+          set -x
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install tree wxwidgets
           mkdir build
           cd build
           cmake ..
