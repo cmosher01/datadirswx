@@ -46,3 +46,32 @@ jobs:
       - name: "Test"
         shell: "bash"
         run: "./build/datadirswx.app/Contents/MacOS/datadirswx"
+
+
+
+  "build-windows":
+    runs-on: "windows-latest"
+    steps:
+      - uses: "actions/checkout@v3"
+
+      - uses: "msys2/setup-msys2@v2"
+        with:
+          pacboy: >-
+            toolchain:p
+            cmake:p
+            ninja:p
+            wxwidgets3.2-msw:p
+
+      - name: "Build"
+        shell: "msys2 {0}"
+        run: |
+          set -x
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install wxwidgets
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
+
+      - name: "Test"
+        shell: "msys2 {0}"
+        run: "./build/datadirswx.app/Contents/MacOS/datadirswx"
