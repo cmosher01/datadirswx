@@ -24,7 +24,7 @@ jobs:
 
       - name: "Test"
         shell: "bash"
-        run: "./build/datadirswx"
+        run: "ctest -V"
 
 
 
@@ -45,7 +45,7 @@ jobs:
 
       - name: "Test"
         shell: "bash"
-        run: "./build/datadirswx.app/Contents/MacOS/datadirswx"
+        run: "ctest -V"
 
 
 
@@ -73,4 +73,4 @@ jobs:
 
       - name: "Test"
         shell: "msys2 {0}"
-        run: "./build/datadirswx"
+        run: "ctest -V"

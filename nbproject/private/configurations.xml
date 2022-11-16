@@ -24,6 +24,10 @@
         <df name="datadirswx.dir">
         </df>
       </df>
+      <df name="Testing">
+        <df name="Temporary">
+        </df>
+      </df>
       <in>datadirswx.cpp</in>
     </df>
   </logicalFolder>
