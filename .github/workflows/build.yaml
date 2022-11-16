@@ -15,8 +15,11 @@ jobs:
       - shell: "bash"
         run: |
           set -x
+          sudo apt-get -qqqq install libwxgtk3.0-gtk3-dev
           mkdir build
           cd build
           cmake ..
           cmake --build .
-          ./datadirswx
+
+      - shell: "bash"
+        run: "./datadirswx"
