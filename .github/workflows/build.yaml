@@ -18,6 +18,8 @@ jobs:
           set -x
           sudo apt-get -qqqq update
           sudo apt-get -qqqq install xdg-user-dirs libwxgtk3.0-gtk3-dev
+          xdg-user-dirs-update --force
+          env | grep -i xdg
           ls -l /home/runner
           ls -l /home/runner/.config
           mkdir build
