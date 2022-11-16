@@ -73,4 +73,4 @@ jobs:
 
       - name: "Test"
         shell: "msys2 {0}"
-        run: "./build/datadirswx.app/Contents/MacOS/datadirswx"
+        run: "./build/datadirswx"
