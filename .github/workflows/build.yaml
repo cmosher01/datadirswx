@@ -1,0 +1,22 @@
+---
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  "build-epple2-ubuntu":
+
+    
+    runs-on: "ubuntu-22.04"
+    steps:
+      - uses: "actions/checkout@v3"
+
+      - shell: "bash"
+        run: |
+          set -x
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
+          ./datadirswx
