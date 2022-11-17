@@ -38,8 +38,8 @@
           <executablePath></executablePath>
           <ccTool>
             <incDir>
-              <pElem>/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0</pElem>
-              <pElem>/usr/include/wx-3.0</pElem>
+              <pElem>/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2</pElem>
+              <pElem>/usr/include/wx-3.2</pElem>
             </incDir>
             <preprocessorList>
               <Elem>WXUSINGDLL</Elem>

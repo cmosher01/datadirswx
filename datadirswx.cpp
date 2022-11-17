@@ -17,8 +17,7 @@ int main(int argc, char **argv)
     wxStandardPaths sp = wxStandardPaths::Get();
 
     sp.UseAppInfo(wxStandardPaths::AppInfo_VendorName | wxStandardPaths::AppInfo_AppName);
-
-
+    sp.SetFileLayout(wxStandardPaths::FileLayout_XDG);
 
     wxString home = ::wxGetHomeDir();
     std::printf("%20s: %s\n", "home", (const char *)home.c_str());
@@ -29,7 +28,7 @@ int main(int argc, char **argv)
     wxString conf = sp.GetUserConfigDir();
     std::printf("%20s: %s\n", "config", (const char *)conf.c_str());
 
-    wxString cache = sp.GetUserLocalDataDir();
+    wxString cache = sp.GetUserDir(wxStandardPaths::Dir_Cache);
     std::printf("%20s: %s\n", "cache", (const char *)cache.c_str());
 
     wxString docs = sp.GetAppDocumentsDir();
