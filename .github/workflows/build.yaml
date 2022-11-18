@@ -75,5 +75,7 @@ jobs:
 
       - name: "APPDATA test"
         run: |
-          [Environment]::SetEnvironmentVariable("APPDATA", "D:\\a\\_temp", "Machine")
-          datadirswx.exe
+          mkdir D/a/_temp/foo
+          [Environment]::SetEnvironmentVariable("APPDATA", "D:\\a\\_temp\\foo", "Machine")
+          D:
+          /a/datadirswx/datadirswx/datadirswx.exe
