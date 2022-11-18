@@ -1,0 +1,20 @@
+---
+on:
+  push:
+    branches:
+      - "*"
+jobs:
+  "win":
+    runs-on: "windows-latest"
+    steps:
+      - uses: "actions/checkout@v3"
+      - run: |
+          Get-ChildItem -Path C:\msys64 -Force
+          $Env:Path
+          $Reg = "Registry::HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
+          (Get-ItemProperty -Path "$Reg" -Name PATH).Path
+      - shell: "msys2 {0}"
+        run: |
+          pwd
+          ls -l /c/msys64
+          ls -l C:\\msys64

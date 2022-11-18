@@ -1,8 +1,9 @@
 ---
 on:
-  push:
-    branches:
-      - "*"
+  workflow_dispatch:
+#  push:
+#    branches:
+#      - "*"
 
 jobs:
   "build-ubuntu":
@@ -36,9 +37,11 @@ jobs:
 
       - name: "Build"
         shell: "bash"
+        env:
+          "HOMEBREW_NO_AUTO_UPDATE": "1"
         run: |
           set -x
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install wxwidgets
+          brew install wxwidgets
           cmake .
           cmake --build .
 
@@ -72,17 +75,3 @@ jobs:
       - name: "Test"
         shell: "msys2 {0}"
         run: "ctest -V"
-
-      - name: "APPDATA test"
-        shell: "pwsh"
-        run: |
-          Set-PSDebug -Trace 1
-          mkdir D:\a\_temp\foo
-          .\testenv.ps1 -RunAsAdmin
-          $env:APPDATA
-
-      - name: "Test2"
-        shell: "msys2 {0}"
-        run: |
-          echo $APPDATA
-          ctest -V

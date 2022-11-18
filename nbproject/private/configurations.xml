@@ -4,6 +4,7 @@
     <df root="." name="0">
       <df name=".github">
         <df name="workflows">
+          <in>win.yaml</in>
         </df>
       </df>
       <df name="build">
