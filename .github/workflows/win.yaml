@@ -13,8 +13,9 @@ jobs:
           $Env:Path
           $Reg = "Registry::HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
           (Get-ItemProperty -Path "$Reg" -Name PATH).Path
-      - shell: "msys2 {0}"
-        run: |
+
+          C:
+          cd /msys64
           pwd
-          ls -l /c/msys64
-          ls -l C:\\msys64
+          ls usr/bin
+          ls mingw64/bin
