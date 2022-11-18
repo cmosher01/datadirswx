@@ -73,9 +73,17 @@ jobs:
         shell: "msys2 {0}"
         run: "ctest -V"
 
+
       - name: "APPDATA test"
+        shell: "pwsh"
         run: |
-          mkdir D:\a\_temp\foo
-          [Environment]::SetEnvironmentVariable("APPDATA", "D:\a\_temp\foo", "Machine")
-          D:
           \a\datadirswx\datadirswx\datadirswx.exe
+          Write-Output 'a'
+          [Environment]::SetEnvironmentVariable("APPDATA", "D:\a\_temp\foo", "Machine")
+          Write-Output 'b'
+          mkdir D:\a\_temp\foo
+          Write-Output 'c'
+          D:
+          Write-Output 'd'
+          \a\datadirswx\datadirswx\datadirswx.exe
+          Write-Output 'e'
