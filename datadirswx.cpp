@@ -2,9 +2,6 @@
 #include <wx/init.h>
 #include <wx/app.h>
 #include <wx/utils.h>
-#ifdef __WXMSW__
-#include <wx/msw/wrapwin.h>
-#endif
 #include <cstdio>
 
 
@@ -49,7 +46,7 @@ int main(int argc, char **argv)
     std::printf("%20s: %s\n", "config", (const char *)conf.c_str());
 
 #ifdef __WXMSW__
-    wxString appdata = sp.MSWGetShellDir(CSIDL_APPDATA);
+    wxString appdata = sp.MSWGetShellDir(26);
     std::printf("%20s: %s\n", "appdata", (const char *)appdata.c_str());
 #endif
 
