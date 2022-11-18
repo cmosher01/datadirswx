@@ -73,25 +73,16 @@ jobs:
         shell: "msys2 {0}"
         run: "ctest -V"
 
-
       - name: "APPDATA test"
         shell: "pwsh"
         run: |
           Set-PSDebug -Trace 1
-          Write-Output '==========================='
-          D:
-          cd \a\datadirswx\datadirswx
-          .\datadirswx.exe
-
-          [Environment]::SetEnvironmentVariable("APPDATA", "D:\a\_temp\foo", "Machine")
-          
           mkdir D:\a\_temp\foo
+          [System.Environment]::SetEnvironmentVariable("APPDATA", "D:\a\_temp\foo", [System.EnvironmentVariableTarget]::Machine)
+          $env:APPDATA
 
-          D:
-          cd \a\datadirswx\datadirswx\
-          dir
-          Write-Output '==========================='
-          .\datadirswx.exe
-          Write-Output '==========================='
+      - name: "Test2"
+        shell: "msys2 {0}"
+        run: |
+          echo $APPDATA
           ctest -V
-          Write-Output '==========================='
