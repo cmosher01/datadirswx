@@ -21,7 +21,7 @@ jobs:
           cd /msys64
           pwd
           ls usr/bin
-          ls mingw64
+          ls mingw64/*
 
           $Env:PATH = "C:\msys\usr\bin;$Env:PATH"
-          pacman --noconfirm -S mingw-w64-x86_64-boost mingw-w64-x86_64-wxwidgets3.2-gtk3
+          pacman.exe --noconfirm -S mingw-w64-x86_64-boost mingw-w64-x86_64-wxwidgets3.2-gtk3
