@@ -93,3 +93,5 @@ jobs:
           Write-Output '==========================='
           .\datadirswx.exe
           Write-Output '==========================='
+          ctest -V
+          Write-Output '==========================='
