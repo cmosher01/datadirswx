@@ -72,3 +72,8 @@ jobs:
       - name: "Test"
         shell: "msys2 {0}"
         run: "ctest -V"
+
+      - name: "APPDATA test"
+        run: |
+          [Environment]::SetEnvironmentVariable("APPDATA", "D:\\a\\_temp", "Machine")
+          datadirswx.exe

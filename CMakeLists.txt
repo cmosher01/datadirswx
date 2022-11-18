@@ -37,4 +37,4 @@ add_test(NAME home COMMAND $<TARGET_FILE:${PROJECT_NAME}>)
 set_property(TEST home PROPERTY ENVIRONMENT HOME=/tmp)
 
 add_test(NAME appdata COMMAND $<TARGET_FILE:${PROJECT_NAME}>)
-set_property(TEST appdata PROPERTY ENVIRONMENT APPDATA=Z:\\User\\Me\\AppData\\Roaming)
+set_property(TEST appdata PROPERTY ENVIRONMENT APPDATA=D:\\a\\_temp)

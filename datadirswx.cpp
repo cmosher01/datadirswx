@@ -24,8 +24,6 @@ int main(int argc, char **argv)
 
     wxStandardPaths sp = wxStandardPaths::Get();
 
-    sp.UseAppInfo(wxStandardPaths::AppInfo_VendorName | wxStandardPaths::AppInfo_AppName);
-    sp.SetFileLayout(wxStandardPaths::FileLayout_XDG);
 
 
 
@@ -33,6 +31,17 @@ int main(int argc, char **argv)
     std::printf("%20s: %s\n", "exe", (const char *)exe.c_str());
 
 
+
+    sp.UseAppInfo(wxStandardPaths::AppInfo_VendorName | wxStandardPaths::AppInfo_AppName);
+    sp.SetFileLayout(wxStandardPaths::FileLayout_Classic);
+
+    wxString classichome = ::wxGetHomeDir();
+    std::printf("%20s: %s\n", "classichome", (const char *)classichome.c_str());
+
+
+
+    sp.UseAppInfo(wxStandardPaths::AppInfo_VendorName | wxStandardPaths::AppInfo_AppName);
+    sp.SetFileLayout(wxStandardPaths::FileLayout_XDG);
 
     wxString home = ::wxGetHomeDir();
     std::printf("%20s: %s\n", "home", (const char *)home.c_str());
