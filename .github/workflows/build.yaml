@@ -77,13 +77,19 @@ jobs:
       - name: "APPDATA test"
         shell: "pwsh"
         run: |
-          \a\datadirswx\datadirswx\datadirswx.exe
-          Write-Output 'a'
-          [Environment]::SetEnvironmentVariable("APPDATA", "D:\a\_temp\foo", "Machine")
-          Write-Output 'b'
-          mkdir D:\a\_temp\foo
-          Write-Output 'c'
+          Set-PSDebug -Trace 1
+          Write-Output '==========================='
           D:
-          Write-Output 'd'
-          \a\datadirswx\datadirswx\datadirswx.exe
-          Write-Output 'e'
+          cd \a\datadirswx\datadirswx
+          .\datadirswx.exe
+
+          [Environment]::SetEnvironmentVariable("APPDATA", "D:\a\_temp\foo", "Machine")
+          
+          mkdir D:\a\_temp\foo
+
+          D:
+          cd \a\datadirswx\datadirswx\
+          dir
+          Write-Output '==========================='
+          .\datadirswx.exe
+          Write-Output '==========================='
