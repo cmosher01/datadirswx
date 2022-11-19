@@ -24,6 +24,7 @@ int main(int argc, char **argv)
 
     wxStandardPaths sp = wxStandardPaths::Get();
 
+    
 
 
 
@@ -53,11 +54,6 @@ int main(int argc, char **argv)
 
     wxString conf = sp.GetUserConfigDir();
     std::printf("%20s: %s\n", "config", (const char *)conf.c_str());
-
-#ifdef __WXMSW__
-    wxString appdata = sp.MSWGetShellDir(26);
-    std::printf("%20s: %s\n", "appdata", (const char *)appdata.c_str());
-#endif
 
     wxString conffile = sp.MakeConfigFileName("test");
     std::printf("%20s: %s\n", "configfile", (const char *)conffile.c_str());
