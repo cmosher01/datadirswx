@@ -30,9 +30,11 @@ jobs:
           HOME=$(pwd)
           xdg-user-dirs-update --force
           xdg-user-dirs-update --set DOCUMENTS $HOME/MyDocs
-          #mv Documents MyDocs
+          pwd
           tree -a
-          cat .config/user-dirs.dirs
+          env | grep -i xdg
+          #mv Documents MyDocs
+          #cat .config/user-dirs.dirs
           cd -
           HOME=$saved_home
           cmake .
