@@ -32,12 +32,14 @@ jobs:
         env:
           "HOME": "${{ github.workspace }}/home"
         run: |
+          set -x
           cd ~
           pwd
+          env | grep -i xdg
+          echo $HOME
           xdg-user-dirs-update --force
           xdg-user-dirs-update --set DOCUMENTS $HOME/MyDocs
           cat .config/user-dirs.dirs
-          env | grep -i xdg
           tree -a
           mv Documents MyDocs
           cd -

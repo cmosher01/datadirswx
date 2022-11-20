@@ -5,6 +5,7 @@
 #include <wx/utils.h>
 
 #include <filesystem>
+#include <iostream>
 #include <cstdio>
 
 
@@ -27,16 +28,16 @@ int main(int argc, char **argv)
     sp.SetFileLayout(wxStandardPaths::FileLayout_XDG);
 
     const std::filesystem::path exe = std::filesystem::path(sp.GetExecutablePath().t_str());
-    std::printf("%10s: %s\n", "exe", exe.c_str());
+    std::cout << exe << std::endl;
 
     const std::filesystem::path conf = std::filesystem::path(sp.GetUserConfigDir().t_str()) / idApp;
-    std::printf("%10s: %s\n", "config", conf.c_str());
+    std::cout << conf << std::endl;
 
     const std::filesystem::path cache = std::filesystem::path(sp.GetUserDir(wxStandardPaths::Dir_Cache).t_str()) / idApp;
-    std::printf("%10s: %s\n", "cache", cache.c_str());
+    std::cout << cache << std::endl;
 
     const std::filesystem::path docs = std::filesystem::path(sp.GetAppDocumentsDir().t_str()) / idApp;
-    std::printf("%10s: %s\n", "documents", docs.c_str());
+    std::cout << docs << std::endl;
 
 
 
