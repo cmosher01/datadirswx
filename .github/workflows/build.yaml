@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: "actions/checkout@v3"
 
-      - name: "Build"
+      - name: "Set up"
         shell: "bash"
         run: |
           set -x
@@ -20,22 +20,31 @@ jobs:
           sudo add-apt-repository "deb http://mirror.math.princeton.edu/pub/ubuntu kinetic main universe"
           sudo apt-get -qqqq update
           sudo apt-get -qqqq install tree xdg-user-dirs libwxgtk3.2-dev
-          apt info xdg-user-dirs
           xdg-user-dirs-update --force
-          saved_home=$HOME
           mkdir home
           cd home
           mkdir .config
           mkdir .cache
-          HOME=$(pwd)
+          cd -
+
+      - name: "Set up test"
+        shell: "bash"
+        env:
+          "HOME": "${{ github.workspace }}/home"
+        run: |
+          cd ~
+          pwd
           xdg-user-dirs-update --force
           xdg-user-dirs-update --set DOCUMENTS $HOME/MyDocs
-          pwd
-          tree -a
+          cat .config/user-dirs.dirs
           env | grep -i xdg
-          #mv Documents MyDocs
-          #cat .config/user-dirs.dirs
+          tree -a
+          mv Documents MyDocs
           cd -
+
+      - name: "Build"
+        shell: "bash"
+        run: |
           HOME=$saved_home
           cmake .
           cmake --build .
