@@ -1,1 +1,10 @@
+/datadirswx
+/home/
 /build/
+/CMakeCache.txt
+/CMakeFiles/
+/CTestTestfile.cmake
+/Makefile
+/Testing/
+/cmake_install.cmake
+/compile_commands.json

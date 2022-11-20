@@ -24,7 +24,4 @@ enable_testing()
 add_test(NAME nominal COMMAND $<TARGET_FILE:${PROJECT_NAME}>)
 
 add_test(NAME home COMMAND $<TARGET_FILE:${PROJECT_NAME}>)
-set_property(TEST home PROPERTY ENVIRONMENT HOME=/tmp)
-
-add_test(NAME appdata COMMAND $<TARGET_FILE:${PROJECT_NAME}>)
-set_property(TEST appdata PROPERTY ENVIRONMENT APPDATA=D:\\a\\_temp)
+set_property(TEST home PROPERTY ENVIRONMENT HOME=${CMAKE_SOURCE_DIR}/home)

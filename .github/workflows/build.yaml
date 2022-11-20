@@ -21,6 +21,19 @@ jobs:
           sudo apt-get -qqqq update
           sudo apt-get -qqqq install xdg-user-dirs libwxgtk3.2-dev
           xdg-user-dirs-update --force
+          saved_home=$HOME
+          mkdir home
+          cd home
+          mkdir .config
+          mkdir .cache
+          HOME=$(pwd)
+          xdg-user-dirs-update --force
+          xdg-user-dirs-update --set DOCUMENTS $HOME/MyDocs
+          mv Documents MyDocs
+          tree -a
+          cat .config/user-dirs.dirs
+          cd -
+          HOME=$saved_home
           cmake .
           cmake --build .
 
