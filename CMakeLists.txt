@@ -23,5 +23,7 @@ enable_testing()
 
 add_test(NAME nominal COMMAND $<TARGET_FILE:${PROJECT_NAME}>)
 
+if(UNIX AND NOT APPLE)
 add_test(NAME home COMMAND $<TARGET_FILE:${PROJECT_NAME}>)
 set_property(TEST home PROPERTY ENVIRONMENT HOME=${CMAKE_SOURCE_DIR}/home)
+endif()
