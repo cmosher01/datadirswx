@@ -15,17 +15,11 @@ jobs:
         shell: "bash"
         run: |
           set -x
-          sudo apt-get -qqqq update
-          sudo apt-get -qqqq install software-properties-common
           sudo add-apt-repository "deb http://mirror.math.princeton.edu/pub/ubuntu kinetic main universe"
           sudo apt-get -qqqq update
           sudo apt-get -qqqq install tree xdg-user-dirs libwxgtk3.2-dev
           xdg-user-dirs-update --force
           mkdir home
-          cd home
-          mkdir .config
-          mkdir .cache
-          cd -
 
       - name: "Set up test"
         shell: "bash"
@@ -37,6 +31,7 @@ jobs:
           unset XDG_CONFIG_HOME
           xdg-user-dirs-update --force
           xdg-user-dirs-update --set DOCUMENTS $HOME/MyDocs
+          mkdir .cache
           tree -a
           cat .config/user-dirs.dirs
           mv Documents MyDocs
